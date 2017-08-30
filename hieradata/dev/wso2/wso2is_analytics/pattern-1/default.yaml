@@ -14,11 +14,12 @@
 
 ---
 classes:
-  - wso2das
+  - wso2is_analytics
 
-wso2::service_name: wso2das
-wso2::hostname: das.dev.wso2.org
-wso2::mgt_hostname: das.dev.wso2.org
+wso2::service_name: wso2is_analytics
+wso2::hostname: is.analytics.dev.wso2.org
+wso2::mgt_hostname: is.analytics.dev.wso2.org
+wso2::pack_filename: wso2is-analytics-5.3.0.zip
 
 #wso2::file_list:
 #  - "repository/components/lib/%{hiera('wso2::datasources::mysql::connector_jar')}"
@@ -60,7 +61,7 @@ wso2::ha_deployment:
 #wso2::registry_mounts:
 #  wso2_config_db:
 #    path: /_system/config
-#    target_path: /_system/config/das
+#    target_path: /_system/config/is-analytics
 #    read_only: false
 #    registry_root: /
 #    enable_cache: true
@@ -74,7 +75,7 @@ wso2::ha_deployment:
 
 wso2::clustering:
   enabled: false
-  domain: das.wso2.domain
+  domain: is.analytics.dev.wso2.org
   local_member_host: "%{::ipaddress}"
   local_member_port: 4000
   sub_domain: mgt
@@ -100,7 +101,7 @@ wso2::clustering:
 #     tag_value: tag-value
 
 wso2::portal:
-  hostname: das.dev.wso2.org
+  hostname: is.analytics.dev.wso2.org
 #  port: ""
 #  protocol: ""
 
@@ -262,9 +263,9 @@ wso2::metrics_datasources:
 #wso2::sso_authentication:
 #  enabled: false
 #  login_page: /carbon/admin/login.jsp
-#  service_provider_id: wso2das
+#  service_provider_id: wso2is_analytics
 #  sso_service_url: https://is.dev.wso2.org:9443/samlsso
-#  consumer_service_url: https://das.dev.wso2.org:9443/acs
+#  consumer_service_url: https://is.analytics.dev.wso2.org:9443/acs
 
 # Secure vault configuration
 #wso2::enable_secure_vault: true

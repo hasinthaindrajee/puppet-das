@@ -14,7 +14,7 @@
 #  limitations under the License.
 #----------------------------------------------------------------------------
 
-class wso2das::params {
+class wso2is_analytics::params {
 
   # Set facter variables
   $vm_type                    = $::vm_type
@@ -196,7 +196,7 @@ class wso2das::params {
     ]
 
     $portal   = {
-      hostname   => 'das.dev.wso2.org'
+      hostname   => 'is.analytics.dev.wso2.org'
     }
 
     $directory_list             = [
@@ -349,8 +349,8 @@ class wso2das::params {
     }
   }
 
-  $product_name               = 'wso2das'
-  $product_version            = '3.1.0'
+  $product_name               = 'wso2is-analytics'
+  $product_version            = '5.3.0'
   $platform_version           = '4.4.0'
   $carbon_home                = "${install_dir}/${product_name}-${product_version}"
   $pack_file_abs_path         = "${pack_dir}/${pack_filename}"

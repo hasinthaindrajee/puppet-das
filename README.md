@@ -1,6 +1,7 @@
-# WSO2 Data Analytics Server Puppet Module
+# WSO2 IS Analytics Server Puppet Module
 
-This repository contains the Puppet Module for installing and configuring WSO2 Data Analytics Server on various environments. It supports multiple versions of WSO2 Data Analytics Server. Configuration data is managed using [Hiera](http://docs.puppetlabs.com/hiera/1/). Hiera provides a mechanism for separating configuration data from Puppet scripts and managing them in a separate set of YAML files in a hierarchical manner.
+This repository contains the Puppet Module for installing and configuring WSO2 IS Analytics Server on various
+environments. It supports multiple versions of WSO2 Data Analytics Server. Configuration data is managed using [Hiera](http://docs.puppetlabs.com/hiera/1/). Hiera provides a mechanism for separating configuration data from Puppet scripts and managing them in a separate set of YAML files in a hierarchical manner.
 
 ## Supported Operating Systems
 
@@ -13,9 +14,9 @@ This repository contains the Puppet Module for installing and configuring WSO2 D
 
 ## Setup Puppet Environment
 
-* Setup the puppet environment with the puppet modules wso2das and wso2base.
-* WSO2 DAS 3.1.0  puppet modules are compatible and tested with
-[puppet-base](https://github.com/wso2/puppet-base/) version 1.0.1 and [puppet-common](https://github.com/wso2/puppet-common) version 1.0.0
+* Setup the puppet environment with the puppet modules wso2is_analytics and wso2base.
+* WSO2 IS Analytics 5.3.0  puppet modules are compatible and tested with
+[puppet-base](https://github.com/wso2/puppet-base/) version 1.0.0 and [puppet-common](https://github.com/wso2/puppet-common) version 1.0.0
 * So if using puppet-common's setup.sh to setup the PUPPET_HOME, use this version (1.0.0) of puppet-common.
 * After setting up PUPPET_HOME using puppet-common's setup.sh, checkout the above mentioned compatible version of puppet-base.
 
@@ -26,18 +27,19 @@ Follow the steps mentioned in the [wiki](https://github.com/wso2/puppet-base/wik
 
 Copy the following files to their corresponding locations, in the Puppet Master.
 
-1. WSO2 Data Analytics Server 3.1.0 distribution (wso2das-3.1.0.zip) to `<PUPPET_HOME>/modules/wso2das/files`
+1. WSO2 IS Analytics Server 5.3.0 distribution (wso2is_analytics-5.3.0.zip) to 'PUPPET_HOME>/modules/wso2is_analytics/files`
 2. JDK jdk-8u112-linux-x64.tar.gz distribution to `<PUPPET_HOME>/modules/wso2base/files`
-3. (if using MySQL databases)MySQL JDBC driver JAR (mysql-connector-java-x.x.xx-bin.jar) into the <PUPPET_HOME>/modules/wso2das/files/configs/repository/components/lib
+3. (if using MySQL databases)MySQL JDBC driver JAR (mysql-connector-java-x.x.xx-bin.jar) into the <PUPPET_HOME>/modules/wso2is_analytics/files/configs/repository/components/lib
 4. (if using svn based deployment synchronization)
-    a. svnkit-all-1.8.7.wso2v1.jar into <PUPPET_HOME>/modules/wso2das/files/configs/repository/components/dropins
-    b. trilead-ssh2-1.0.0-build215.jar into <PUPPET_HOME>/modules/wso2das/files/configs/repository/components/lib
+    a. svnkit-all-1.8.7.wso2v1.jar into <PUPPET_HOME>/modules/wso2is_analytics/files/configs/repository/components/dropins
+    b. trilead-ssh2-1.0.0-build215.jar into <PUPPET_HOME>/modules/wso2is_analytics/files/configs/repository/components/lib
 
-## Running WSO2 Data Analytics Server in the `default` profile
+## Running WSO2 IS Analytics Server in the `default` profile
 No changes to Hiera data are required to run the `default` profile.  Copy the above mentioned files to their corresponding locations and apply the Puppet Modules.
 
-## Running WSO2 Data Analytics Server with clustering in specific profiles
-No changes to Hiera data are required to run the distributed deployment of WSO2 Data Analytics Server, other than pointing to the correct resources such as the deployment synchronization and remote DB instances. For more details refer the [WSO2 Data Analytics Server clustering guide](https://docs.wso2.com/display/CLUSTER44x/Clustering+Data+Analytics+Server)
+## Running WSO2 IS Analytics Server with clustering in specific profiles
+No changes to Hiera data are required to run the distributed deployment of WSO2 IS Analytics Server, other than
+pointing to the correct resources such as the deployment synchronization and remote DB instances. For more details refer the [WSO2 Data Analytics Server clustering guide](https://docs.wso2.com/display/CLUSTER44x/Clustering+Data+Analytics+Server)
 
 1. If the Clustering Membership Scheme is `WKA`, add the Well Known Address list.
 
@@ -87,7 +89,7 @@ No changes to Hiera data are required to run the distributed deployment of WSO2 
     ```yaml
     wso2_config_db:
       path: /_system/config
-      target_path: /_system/config/das
+      target_path: /_system/config/is-analytics
       read_only: false
       registry_root: /
       enable_cache: true
@@ -116,7 +118,7 @@ No changes to Hiera data are required to run the distributed deployment of WSO2 
            append_tenant_id: true
     ```
 
-## Running WSO2 Data Analytics Server with Secure Vault
+## Running WSO2 IS Analytics Server with Secure Vault
 WSO2 Carbon products may contain sensitive information such as passwords in configuration files. [WSO2 Secure Vault](https://docs.wso2.com/display/Carbon444/Securing+Passwords+in+Configuration+Files) provides a solution for securing such information.
 
 Uncomment and modify the below changes in Hiera file to apply Secure Vault.
@@ -157,5 +159,6 @@ Uncomment and modify the below changes in Hiera file to apply Secure Vault.
 
     Please add the `password-tmp` template also to `template_list` if the `vm_type` is not `docker` when you are running the server in `default` platform.
 
-## Running WSO2 Data Analytics Server on Kubernetes
-WSO2 Puppet Module ships Hiera data required to deploy WSO2 Data Analytics Server on Kubernetes. For more information refer to the documentation on [deploying WSO2 products on Kubernetes using WSO2 Puppet Modules](https://docs.wso2.com/display/PM210/Deploying+WSO2+Products+on+Kubernetes+Using+WSO2+Puppet+Modules).
+## Running WSO2 IS Analytics Server on Kubernetes
+WSO2 Puppet Module ships Hiera data required to deploy WSO2 IS Analytics Server on Kubernetes. For more information
+refer to the documentation on [deploying WSO2 products on Kubernetes using WSO2 Puppet Modules](https://docs.wso2.com/display/PM210/Deploying+WSO2+Products+on+Kubernetes+Using+WSO2+Puppet+Modules).

@@ -26,17 +26,17 @@
     <!--
        Product Name
     -->
-    <Name>WSO2 Data Analytics Server</Name>
+    <Name>WSO2 IS Analytics Server</Name>
 
     <!--
        machine readable unique key to identify each product
     -->
-    <ServerKey>DAS</ServerKey>
+    <ServerKey>IS-Analytics</ServerKey>
 
     <!--
        Product Version
     -->
-    <Version>3.1.0</Version>
+    <Version>5.3.0</Version>
 
     <!--
        Host name or IP address of the machine hosting this server
@@ -134,11 +134,7 @@
          e.g. Offset=2 and HTTPS port=9443 will set the effective HTTPS port to 9445
          -->
 
-<%- if @ports['offset'] -%>
-        <Offset><%= @ports['offset'] %></Offset>
-<%- else -%>
-        <Offset>0</Offset>
-<%- end -%>
+        <Offset>1</Offset>
 
         <!-- The JMX Ports -->
         <JMX>
@@ -363,7 +359,7 @@
     <!--
       Enable following config to allow Emails as usernames.
     -->
-    <EnableEmailUserName>true</EnableEmailUserName>
+    <!--EnableEmailUserName>true</EnableEmailUserName-->
 
     <!--
       Security configurations
